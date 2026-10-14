@@ -92,8 +92,8 @@
 _Static_assert((1U << CALIBRATION_SHIFT) == CALIBRATION_SAMPLES,
                "CALIBRATION_SHIFT moet gelijk zijn aan log2(CALIBRATION_SAMPLES)");
 
-_Static_assert(NTC_LUT_SIZE == 41U,
-               "NTC_LUT_SIZE moet exact 41 zijn (0 t/m 40 graden Celsius)");
+_Static_assert(NTC_LUT_SIZE == 51U,
+               "NTC_LUT_SIZE moet exact 51 zijn (0 t/m 50 graden Celsius)");
 
 _Static_assert(SENSOR_SENSITIVITY_NA_PPM > 0U && SENSOR_SENSITIVITY_NA_PPM <= 30U,
                "SENSOR_SENSITIVITY_NA_PPM moet binnen realistisch bereik liggen (9-21 nA/ppm)");
@@ -123,16 +123,17 @@ _Static_assert(SENSOR_SENSITIVITY_NA_PPM > 0U && SENSOR_SENSITIVITY_NA_PPM <= 30
  * De tabel is MONOTOON DALEND.
  */
 static const uint8_t ntc_lut[NTC_LUT_SIZE] = {
-    /*  [idx] °C : geschatte 8-bit ADC waarde                              */
-    /*  0°C */ 206, /*  1 */ 203, /*  2 */ 201, /*  3 */ 198, /*  4 */ 195,
-    /*  5°C */ 192, /*  6 */ 189, /*  7 */ 186, /*  8 */ 183, /*  9 */ 178,
-    /* 10°C */ 173, /* 11 */ 169, /* 12 */ 165, /* 13 */ 161, /* 14 */ 157,
-    /* 15°C */ 153, /* 16 */ 150, /* 17 */ 148, /* 18 */ 146, /* 19 */ 145,
-    /* 20°C */ 144, /* 21 */ 141, /* 22 */ 137, /* 23 */ 134, /* 24 */ 131,
-    /* 25°C */ 128, /* 26 */ 124, /* 27 */ 121, /* 28 */ 118, /* 29 */ 115,
-    /* 30°C */ 111, /* 31 */ 108, /* 32 */ 104, /* 33 */ 101, /* 34 */  98,
-    /* 35°C */  95, /* 36 */  92, /* 37 */  90, /* 38 */  87, /* 39 */  85,
-    /* 40°C */  82
+    /*  0°C */ 206, 203, 200, 198, 195, 
+    /*  5°C */ 192, 189, 186, 183, 180, 
+    /* 10°C */ 177, 174, 171, 168, 164, 
+    /* 15°C */ 161, 158, 154, 151, 148, 
+    /* 20°C */ 144, 141, 138, 134, 131, 
+    /* 25°C */ 128, 124, 121, 118, 114, 
+    /* 30°C */ 111, 108, 104, 101,  98, 
+    /* 35°C */  95,  92,  89,  86,  84, 
+    /* 40°C */  82,  79,  77,  74,  72, 
+    /* 45°C */  69,  67,  65,  63,  61, 
+    /* 50°C */  59
 };
 
 /* ═══════════════════════════════════════════════════════════════════════════
